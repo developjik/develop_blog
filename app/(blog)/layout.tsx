@@ -61,7 +61,7 @@ async function Footer() {
   const footer = data?.footer || [];
 
   return (
-    <footer className="bg-accent-1 border-accent-2 border-t">
+    <footer className="py-2 bg-accent-1 border-accent-2 border-t">
       <div className="container mx-auto px-5">
         {footer.length > 0 ? (
           <PortableText
@@ -69,22 +69,17 @@ async function Footer() {
             value={footer as PortableTextBlock[]}
           />
         ) : (
-          <div className="flex flex-col items-center py-28 lg:flex-row">
-            <h3 className="mb-10 text-center text-4xl font-bold leading-tight tracking-tighter lg:mb-0 lg:w-1/2 lg:pr-4 lg:text-left lg:text-5xl">
-              Built with Next.js.
-            </h3>
-            <div className="flex flex-col items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4">
+          <div className="relative p-3 flex flex-col items-center gap-4 lg:flex-row lg:justify-center">
+            <h4 className="text-center text-base font-bold leading-tight tracking-tighter text-gray-500 lg:text-xl">
+              Thanks for visiting Developjik Frontend 메모장.
+            </h4>
+
+            <div className="flex flex-col items-center justify-center lg:absolute lg:right-0">
               <a
-                href="https://nextjs.org/docs"
-                className="mx-3 mb-6 border border-black bg-black py-3 px-12 font-bold text-white transition-colors duration-200 hover:bg-white hover:text-black lg:mb-0 lg:px-8"
+                href="https://github.com/developjik"
+                className="border border-black bg-black py-3 px-12 font-bold text-white transition-colors duration-200 hover:bg-white hover:text-black"
               >
-                Read Documentation
-              </a>
-              <a
-                href="https://github.com/vercel/next.js/tree/canary/examples/cms-sanity"
-                className="mx-3 font-bold hover:underline"
-              >
-                View on GitHub
+                Visit My GitHub
               </a>
             </div>
           </div>
@@ -102,9 +97,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} bg-white text-black`}>
       <body>
-        <section className="min-h-screen">
+        <section className="min-h-screen flex flex-col">
           {draftMode().isEnabled && <AlertBanner />}
-          <main>{children}</main>
+          <main className="flex flex-col flex-1">{children}</main>
           <Suspense>
             <Footer />
           </Suspense>
